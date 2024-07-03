@@ -29,6 +29,13 @@ app.put("/courses/:id", (req,res)=>{
     res.json(courses);
 });
 
+app.delete("/courses/:id",(req,res)=>{
+    const course = courses.find(c => c.id ===parseInt(req.params.id));
+    if(!course) return res.status(404).send('The course with the given ID was not found');
+    courses = courses.filter(c => c.id !== parseInt(req.params.id));
+    res.json(courses);
+})
+
 app.listen(port, ()=>{
     console.log(`Server is running on port ${port}`);
 });
