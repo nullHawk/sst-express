@@ -43,5 +43,5 @@ app.listen(port, ()=>{
 function middleware(req,res,next){
     // method, ip, hostname, date
     console.log("Method : "+req.method +"\nIP address : " + req.ip + "\nHostname : " + req.hostname + "\nDate : " + new Date());
-    next();
+    next(); // calls nest function
 }
