@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
-
+app.use(middleware)
 const port = 8000;
 
 let courses = [
@@ -39,3 +39,9 @@ app.delete("/courses/:id",(req,res)=>{
 app.listen(port, ()=>{
     console.log(`Server is running on port ${port}`);
 });
+
+function middleware(req,res,next){
+    // method, ip, hostname, date
+    console.log("Hostname : "+req.method +"\nIP address : " + req.ip + "\nHost : " + req.hostname + "\nDate : " + new Date());
+    next();
+}
